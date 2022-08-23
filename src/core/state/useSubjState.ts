@@ -1,6 +1,6 @@
+import {useControlledRender} from '@do-while-for-each/react-tools';
 import {useCallback, useEffect, useState} from 'react';
 import {Subj} from '@do-while-for-each/rxjs';
-import {useControlledRender} from '../useControlledRender';
 
 export const useSubjState = <T = any>(startValue: T): [Subj<T>, (value: T) => void] => {
   const [subj] = useState<Subj>(new Subj<T>({type: 'shareReplay', bufferSize: 1, startValue}));
