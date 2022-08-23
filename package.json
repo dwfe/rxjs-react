@@ -1,0 +1,51 @@
+{
+  "name": "@do-while-for-each/rxjs-react",
+  "description": "RxJS tools for React.js app",
+  "version": "1.0.1",
+  "exports": "./dist/cjs/index.js",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "dist/types/*"
+      ]
+    }
+  },
+  "homepage": "https://github.com/dwfe/rxjs-react",
+  "bugs": "https://github.com/dwfe/rxjs-react/issues",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:dwfe/rxjs-react.git"
+  },
+  "keywords": [
+    "rxjs-react"
+  ],
+  "author": "Do|While|For|Each",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "peerDependencies": {
+    "react": "18.x.x"
+  },
+  "dependencies": {
+    "@do-while-for-each/common": "1.x.x",
+    "@do-while-for-each/rxjs": "1.x.x"
+  },
+  "devDependencies": {
+    "@do-while-for-each/react-cmmn-packs": "1.x.x",
+    "@do-while-for-each/tsconfig": "1.x.x"
+  },
+  "scripts": {
+    "clean": "dwfeFs cleanDir . --fileNames=\"dist;node_modules;package-lock.json\"",
+    "bootstrap": "npm run clean && npm install",
+    "build": "dwfeFs rmForce dist --noConfirm && tsc -b src/tsconfig.json",
+    "version": "npm run build",
+    "postversion": "git push",
+    "deploy": "npm version patch && npm publish"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
