@@ -1,5 +1,5 @@
 import {Observable, Subj} from '@do-while-for-each/rxjs';
-import {TAnyObject} from '@do-while-for-each/common';
+import {IAnyObject} from '@do-while-for-each/common';
 import {ALL_LANG, TLang, Translator} from './contract';
 
 const STORAGE_KEY = 'lang';
@@ -31,13 +31,13 @@ class LangStorage {
   }
 
   addDictionary<TEn, TRu>(dictionaries: { en: TEn, ru: TRu }): Translator<TRu, TEn> {
-    const compositePathTranslator = (path: string, params?: TAnyObject): string => {
+    const compositePathTranslator = (path: string, params?: IAnyObject): string => {
       const dictionary = dictionaries[this.lang] ?? {};
-      const result = path.split('.').reduce((result: TAnyObject | string, item: string) => {
+      const result = path.split('.').reduce((result: IAnyObject | string, item: string) => {
         if (typeof result === 'string')
           throw new Error(`Missing element "${item}" because result "${result}" is already string: lang "${this.lang}" path "${path}" `);
         return result[item];
-      }, dictionary) as TAnyObject | string;
+      }, dictionary) as IAnyObject | string;
       if (typeof result !== 'string')
         throw new Error(`The translation search result is an object: lang "${this.lang}" path "${path}" result "${JSON.stringify(result)}"`);
       if (params) // if need to fill template params e.g. for result: "{{hour}} h {{minute}} m"

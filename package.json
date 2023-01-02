@@ -30,7 +30,7 @@
     "react": "18.x.x"
   },
   "dependencies": {
-    "@do-while-for-each/common": "1.x.x",
+    "@do-while-for-each/common": "2.x.x",
     "@do-while-for-each/rxjs": "1.x.x",
     "@do-while-for-each/react-tools": "1.x.x"
   },
